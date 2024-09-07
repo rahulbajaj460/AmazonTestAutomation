@@ -12,20 +12,22 @@ pipeline {
                 echo "Username: ${WEBSITE_CREDENTIALS_USR}"
                 echo "Password: ${WEBSITE_CREDENTIALS_PSW}"
 
-                // Update config.properties with Jenkins credentials for Windows
-                bat '''
+                // Use PowerShell with double quotes to interpolate variables
+                bat """
                 echo Updating config.properties with Jenkins credentials
 
-                # Use PowerShell or find another command to replace sed (Windows doesn't have sed by default)
-                powershell -Command "(Get-Content src/test/resources/config.properties) -replace 'mobile=.*', 'mobile=${WEBSITE_CREDENTIALS_USR}' | Set-Content src/test/resources/config.properties"
-                powershell -Command "(Get-Content src/test/resources/config.properties) -replace 'password=.*', 'password=${WEBSITE_CREDENTIALS_PSW}' | Set-Content src/test/resources/config.properties"
-                '''
+                # Update the 'mobile' field with the actual value of ${WEBSITE_CREDENTIALS_USR}
+                powershell -Command "(Get-Content 'src/test/resources/config.properties') -replace 'mobile=.*', 'mobile=${WEBSITE_CREDENTIALS_USR}' | Set-Content 'src/test/resources/config.properties'"
+
+                # Update the 'password' field with the actual value of ${WEBSITE_CREDENTIALS_PSW}
+                powershell -Command "(Get-Content 'src/test/resources/config.properties') -replace 'password=.*', 'password=${WEBSITE_CREDENTIALS_PSW}' | Set-Content 'src/test/resources/config.properties'"
+                """
             }
         }
 
         stage('Run Tests') {
             steps {
-                // Run the tests after updating the config file on Windows
+                // Run the tests after updating the config file
                 bat 'mvn clean test'
             }
         }
