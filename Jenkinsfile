@@ -7,12 +7,14 @@ pipeline {
     }
 
     stages {
-        stage('Checkout Code') {
-            steps {
+       
+       
+       // stage('Checkout Code') {
+       //     steps {
                 // Pull the latest code from your Git repository
-                git url: 'https://github.com/rahulbajaj460/AmazonTestAutomation.git'
-            }
-        }
+       //         git url: 'https://github.com/rahulbajaj460/AmazonTestAutomation.git'
+       //     }
+       // }
 
         stage('Update Config Properties') {
             steps {
