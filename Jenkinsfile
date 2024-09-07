@@ -19,7 +19,7 @@ pipeline {
         stage('Update Config Properties') {
             steps {
                 // Update config.properties with the credentials from Jenkins
-                sh "echo "Here"
+                sh "echo 'Here'"
                 sh '''
                 echo "Updating config.properties with Jenkins credentials"
 
