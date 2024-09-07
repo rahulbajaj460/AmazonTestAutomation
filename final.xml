@@ -2,23 +2,15 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
   
-     <groups>
-		<run>
-			<!-- <include name="sanity" />  -->
-			<include name="regression" />
-		</run>
-	</groups>
-	
-  
-  <test name="Test">
-  
-  	<parameter name="os" value="Windows" />
+	<parameter name="os" value="Windows" />
   	<parameter name="browser"  value="chrome"/> 
-       
-    <classes>
-    	<class name="testCases.TC_001_AccountLoginTest"/>
-    	<class name="testCases.TC_002_SearchFunctionalityTest"/>
-    </classes>
+  
+  	<test name="Test">
     
-  </test> <!-- Test -->
+    	<classes>
+    		<class name="testCases.TC_001_AccountLoginTest"/>
+    		<class name="testCases.TC_002_SearchFunctionalityTest"/>
+    	</classes>
+    
+	</test> <!-- Test -->
 </suite> <!-- Suite -->

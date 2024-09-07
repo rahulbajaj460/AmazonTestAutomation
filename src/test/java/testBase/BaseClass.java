@@ -18,6 +18,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 public class BaseClass {
 
@@ -26,7 +27,8 @@ public class BaseClass {
 	public Properties p;
 	
 	//@BeforeClass
-	@BeforeSuite(groups= {"sanity","regression"})
+	@BeforeSuite
+	@Parameters({"os", "browser"})
 	public void setup(String os, String br) throws IOException
 	{
 	
@@ -38,6 +40,7 @@ public class BaseClass {
 		//loading log4j file
 		logger=LogManager.getLogger(this.getClass());//Log4j
 		
+		System.out.println(p.getProperty("execution_env"));
 		
 		if(p.getProperty("execution_env").equalsIgnoreCase("remote"))
 	 	{	
@@ -96,7 +99,7 @@ public class BaseClass {
 	
 
 	//@AfterClass
-	@AfterSuite(groups= {"sanity","regression"})
+	@AfterSuite
 	public void tearDown()
 	{
 		driver.close();
