@@ -11,7 +11,7 @@ import testBase.BaseClass;
 public class TC_001_AccountLoginTest extends BaseClass{
 
 	
-	@Test
+	@Test(groups= {"regression","sanity"})
 	public void verifyAccountLogin() {
 		
 		try

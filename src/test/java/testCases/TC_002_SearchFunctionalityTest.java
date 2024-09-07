@@ -9,7 +9,7 @@ import testBase.BaseClass;
 
 public class TC_002_SearchFunctionalityTest extends BaseClass{
 	
-	@Test
+	@Test(groups= {"regression","sanity"})
 	public void validateSearchFunctionality() {
 		
 		try
