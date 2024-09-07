@@ -1,10 +1,10 @@
 pipeline {
     agent any
 
-    environment {
+    //environment {
         // Retrieve credentials from Jenkins (replace with your actual credentials ID)
-        WEBSITE_CREDENTIALS = credentials('amazon_credentials')
-    }
+    //    WEBSITE_CREDENTIALS = credentials('amazon_credentials')
+    //}
 
     stages {
        
